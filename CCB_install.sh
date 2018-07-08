@@ -12,6 +12,8 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='CryptoCashBack'
 COIN_PORT=19551
 RPC_PORT=19552
+SSH_CONFIG="/etc/ssh/sshd_config"
+SSH_PORT=`grep Port $SSH_CONFIG | cut -d " " -f 2`
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -179,8 +181,8 @@ EOF
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
-  ufw allow ssh comment "SSH" >/dev/null 2>&1
-  ufw limit ssh/tcp >/dev/null 2>&1
+  ufw allow $SSH_PORT comment "SSH" >/dev/null 2>&1
+  ufw limit $SSH_PORT/tcp >/dev/null 2>&1
   ufw default allow outgoing >/dev/null 2>&1
   echo "y" | ufw enable >/dev/null 2>&1
 }
