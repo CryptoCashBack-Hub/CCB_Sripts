@@ -15,7 +15,6 @@ Shell script to install a CCBC Masternode on a Linux server running Ubuntu 16.04
 
 ## Private Key
 
-**This script can generate a private key for you, or you can generate your own private key on the Desktop software.**
 
 Steps generate your own private key. 
 1.  Download and install CCBC v1.0.0.1 for Windows -   Download Link  - https://github.com/CryptoCashBack-Hub/CCBC/releases
@@ -73,7 +72,7 @@ CTRL and C  at the same time  (CTRL KEY and C KEY)
 After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
 1. Open the CCBC Desktop Wallet.  
 2. Go to RECEIVE and create a New Address: **MN1**  
-3. Send **25000** CCBC to **MN1**. You need to send 1000 coins in one single transaction.
+3. Send **25000** CCBC to **MN1**. You need to send 25000 coins in one single transaction.
 4. Wait for 15 confirmations.  
 5. Go to **Tools -> Click "Debug Console"** 
 6. Type the following command: **masternode outputs**  
@@ -123,3 +122,4 @@ You want to see **"Masternode started successfully and Status 4"**
 ./ccbc-cli masternode status
 ```
   
+Thank you too Franco#6184 for catching some errors! :)
