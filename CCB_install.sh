@@ -80,7 +80,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading CCBC install files.
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.1.0.0/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.1.0.1/CCBC-linux.tar.gz
 echo Download complete.
 
 echo Installing CCBC.
@@ -158,7 +158,7 @@ echo "! Removing Concierge !"
 sudo rm -rf CCBC-linux.tar.gz
 
 
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.1.0.0/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.1.0.1/CCBC-linux.tar.gz
 echo Download complete.
 echo Installing CCBC.
 tar -xvf CCBC-linux.tar.gz
