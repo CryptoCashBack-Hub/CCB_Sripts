@@ -1,6 +1,6 @@
 ![logo](https://github.com/CryptoCashBack-Hub/CCBC/blob/master/src/qt/res/images/ccbc_logo_horizontal.png)
 
-# CCBC v1.1.0.0 Masternode Setup Guide [ Ubuntu 16.04 ]
+# CCBC v1.1.0.1 Masternode Setup Guide [ Ubuntu 16.04 ]
 
 THIS GUIDE IS FOR ROOT USERS -
 
@@ -17,7 +17,7 @@ Shell script to install a CCBC Masternode on a Linux server running Ubuntu 16.04
 
 
 Steps generate your own private key. 
-1.  Download and install CCBC v1.1.0.0 for Windows -   Download Link  - https://github.com/CryptoCashBack-Hub/CCBC/releases
+1.  Download and install CCBC v1.1.0.1 for Windows -   Download Link  - https://github.com/CryptoCashBack-Hub/CCBC/releases
 2.  Go to **Tools -> Click "Debug Console"** 
 3.  Type the following command: **masternode genkey**  
 4. You now have your generated **Private Key**  (MasternodePrivKey)
