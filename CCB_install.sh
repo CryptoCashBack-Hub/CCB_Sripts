@@ -71,7 +71,12 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 5520 
+sudo ufw allow 5520
+sudo ufw allow 5520/tcp
+sudo ufw allow 5520/udp
+sudo ufw allow 15520
+sudo ufw allow 15520/tcp
+sudo ufw allow 15520/udp
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -80,15 +85,18 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading CCBC install files.
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.2.0.1/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.2.0.1/ccbc-1.2.0.1-x86_64-linux-gnu.tar.gz
 echo Download complete.
 
 echo Installing CCBC.
-tar -xvf CCBC-linux.tar.gz
+tar -xvf ccbc-1.2.0.1-x86_64-linux-gnu.tar.gz
+cd ccbc-1.2.0
+cd bin
 chmod 775 ./ccbcd
 chmod 775 ./ccbc-cli
+cd
 echo CCBC install complete. 
-sudo rm -rf CCBC-linux.tar.gz
+sudo rm -rf ccbc-1.2.0.1-x86_64-linux-gnu.tar.gz
 clear
 
 echo Now ready to setup CCBC configuration file.
@@ -147,6 +155,11 @@ echo "! Stopping CCBC Daemon !"
 echo Configuring server firewall.
 sudo apt-get install -y ufw
 sudo ufw allow 5520
+sudo ufw allow 5520/tcp
+sudo ufw allow 5520/udp
+sudo ufw allow 15520
+sudo ufw allow 15520/tcp
+sudo ufw allow 15520/udp
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -154,33 +167,53 @@ echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
 
-echo "! Removing Concierge !"
+echo "! Removing CCBC !"
 sudo rm -rf CCBC-linux.tar.gz
 
 
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.2.0.1/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.2.0.1/ccbc-1.2.0.1-x86_64-linux-gnu.tar.gz
 echo Download complete.
 echo Installing CCBC.
-tar -xvf CCBC-linux.tar.gz
+tar -xvf ccbc-1.2.0.1-x86_64-linux-gnu.tar.gz
+rm -rf ccbcd
+rm -rf ccbc-cli
+cd ccbc-1.2.0
+cd bin
 chmod 775 ./ccbcd
 chmod 775 ./ccbc-cli
-sudo rm -rf CCBC-linux.tar.gz
+cd
+sudo rm -rf ccbc-1.2.0.1-x86_64-linux-gnu.tar.gz
+cd ccbc-1.2.0
+cd bin
 ./ccbcd -daemon
+cd
 echo CCBC install complete. 
 
 
             ;;
         3)
+	    cd ccbc-1.2.0
+	    cd bin
             ./ccbcd -daemon
+	    cd
 		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild CCBC Index. (Option 6)"
             ;;
 	4)
+	    cd ccbc-1.2.0
+	    cd bin
             ./ccbc-cli stop
+	    cd
             ;;
 	5)
+	    cd ccbc-1.2.0
+	    cd bin
 	    ./ccbc-cli getinfo
+	    cd
 	    ;;
         6)
+	    cd ccbc-1.2.0
+	    cd bin
 	     ./ccbcd -daemon -reindex
+	     cd
             ;;
 esac
