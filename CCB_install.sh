@@ -77,6 +77,8 @@ sudo ufw allow 5520/udp
 sudo ufw allow 15520
 sudo ufw allow 15520/tcp
 sudo ufw allow 15520/udp
+sudo ufw allow 5521/tcp
+sudo ufw allow 5521/udp
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -113,14 +115,16 @@ cat << EOF > /root/.ccbc/ccbc.conf
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
+rpcport=5521
+txindex=1
+logtimestamps=1
 server=1
 listen=1
 daemon=1
-staking=1
-rpcallowip=127.0.0.1
-rpcport=15520
+staking=0
+gen=0
 port=5520
-prune=500
+prune=10
 addnode=144.202.16.251:5520
 addnode=104.238.159.161:5520
 addnode=178.128.116.146:5520
@@ -129,9 +133,11 @@ addnode=158.69.143.106:5520
 addnode=95.216.145.35:5520
 addnode=45.32.123.247:5520
 addnode=seeder.ccbcoin.club
-logtimestamps=1
 maxconnections=256
 masternode=1
+addressindex=1
+timestampindex=1
+spentindex=1
 externalip=$EXTIP
 masternodeprivkey=$GENKEY
 EOF
