@@ -225,10 +225,11 @@ echo CCBC install complete.
             ;;
 	 7)
 	 
-killall -9 ccbcd
-cd /root/.ccbc/
-rm -rf ccbc.conf
-mkdir -p ccbc.conf
+sudo ./ccbc-cli -daemon stop
+echo "! Stopping CCBC Daemon !"
+
+sudo rm -rf /root/.ccbc/ccbc.conf
+sudo mkdir -p /root/.ccbc && touch /root/.ccbc/ccbc.conf
 
 cat << EOF > /root/.ccbc/ccbc.conf
 rpcuser=$RPCUSER
