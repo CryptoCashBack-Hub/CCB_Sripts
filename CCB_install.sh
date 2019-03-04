@@ -229,6 +229,8 @@ sudo ./ccbc-cli -daemon stop
 echo "! Stopping CCBC Daemon !"
 
 sudo rm -rf /root/.ccbc/ccbc.conf
+RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 sudo mkdir -p /root/.ccbc && touch /root/.ccbc/ccbc.conf
 
 cat << EOF > /root/.ccbc/ccbc.conf
