@@ -12,7 +12,8 @@ OPTIONS=(1 "Install New VPS Server"
          3 "Start CCBC Masternode"
 	 4 "Stop CCBC Masternode"
 	 5 "CCBC Server Status"
-	 6 "Rebuild CCBC Masternode Index")
+	 6 "Rebuild CCBC Masternode Index"
+	 7 "Rebuild Conf File")
 
 
 CHOICE=$(whiptail --clear\
@@ -222,4 +223,47 @@ echo CCBC install complete.
 	     ./ccbcd -daemon -reindex
 	     cd
             ;;
+	 7)
+	 
+killall -9 ccbcd
+cd /root/.ccbc/
+rm -rf ccbc.conf
+mkdir -p ccbc.conf
+
+cat << EOF > /root/.ccbc/ccbc.conf
+rpcuser=$RPCUSER
+rpcpassword=$RPCPASSWORD
+rpcallowip=127.0.0.1
+rpcport=5521
+txindex=1
+logtimestamps=1
+server=1
+listen=1
+daemon=1
+staking=0
+gen=0
+port=5520
+prune=10
+addnode=144.202.16.251:5520
+addnode=104.238.159.161:5520
+addnode=178.128.116.146:5520
+addnode=95.179.199.170:5520
+addnode=158.69.143.106:5520
+addnode=95.216.145.35:5520
+addnode=45.32.123.247:5520
+addnode=seeder.ccbcoin.club
+maxconnections=256
+masternode=1
+addressindex=1
+timestampindex=1
+spentindex=1
+externalip=$EXTIP
+masternodeprivkey=$GENKEY
+EOF
+clear
+
+cd
+./ccbcd
+	    ;; 
+	     
 esac
